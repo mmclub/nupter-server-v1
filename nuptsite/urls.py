@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, include, url
+from nuptsite.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+	('^index/$', index),
     # Examples:
     # url(r'^$', 'nuptsite.views.home', name='home'),
     # url(r'^nuptsite/', include('nuptsite.foo.urls')),
