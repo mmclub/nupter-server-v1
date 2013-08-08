@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	('^index/$', index),
+	('^header/$', header),
     # Examples:
     # url(r'^$', 'nuptsite.views.home', name='home'),
     # url(r'^nuptsite/', include('nuptsite.foo.urls')),
@@ -19,4 +20,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
+
 )
