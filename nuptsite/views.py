@@ -11,15 +11,15 @@ def index(request):
 		search_type = request.GET['type']
 		search_value = request.GET['value']
 		if search_type == 'name':
-			students = Students.objects.filter(name = search_value)
+			students = Students.objects.filter(name__contains = search_value)
 		elif search_type == 'number':
-			students = Students.objects.filter(number = search_value)
+			students = Students.objects.filter(number__contains = search_value)
 		elif search_type == 'college':
-			students = Students.objects.filter(college = search_value)
+			students = Students.objects.filter(college__contains = search_value)
 		elif search_type == 'major':
-			students = Students.objects.filter(major = search_value)
+			students = Students.objects.filter(major__contains = search_value)
 		else:
-			students = Students.objects.filter(classes = search_value)
+			students = Students.objects.filter(classes__contains = search_value)
 		message = "you search type : " + search_type + ' value : ' + search_value
 
 	else:

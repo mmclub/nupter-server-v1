@@ -31,7 +31,13 @@
 
 	<ul>
 		{% for student in students %}
-		<li>{{ student.number  }}  <br> {{ student.name  }} </li>
+		<li>{{ student.number  }}  <br> 
+			{{ student.name  }}  <br> 
+			{{ student.college  }}  <br> 
+			{{ student.major  }}  <br> 
+			{{ student.classes  }}  <br> 
+
+		</li>
 		{% endfor %}
 	</ul>
 
