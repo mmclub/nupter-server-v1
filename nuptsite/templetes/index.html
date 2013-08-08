@@ -1,13 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+
 <h1> I am Index </h1>
+
 
 <body>
 
-<form action="" methon='post'>
-	<input type="text" name="value">
-	<input type = "submit" value="Search">
+	<form action="" methon='get'>
+		<input type="text" name="value"><br>
 
-</form>
+		<input type="radio" name="type" value="name">姓名<br>
+		<input type="radio" name="type" value="number">学号<br>
+		<input type="radio" name="type" value="college">学院<br>
+		<input type="radio" name="type" value="major">专业<br>
+		<input type="radio" name="type" value="classes">班级<br>
 
-<h2>  {{ message }} </h2>
+
+		<input type = "submit" value="Search">
+
+
+	</form>
+
+	<h2>  {{ message }} </h2>
+
+
+	<ul>
+		{% for student in students %}
+		<li>{{ student.number  }}  <br> {{ student.name  }} </li>
+		{% endfor %}
+	</ul>
+
+
 
 </body>
+
+
+</html>
