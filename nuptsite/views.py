@@ -1,12 +1,13 @@
 from django.http import HttpResponse
+from django.core import serializers
 from django.template import Template, Context
 from django.shortcuts import render_to_response
-from nuptsite.models import Students
+from nuptsite.models import *
 
 
 		
 
-def index(request):
+def students(request):
 	if ('value' in request.GET) and ('type' in request.GET):
 		search_type = request.GET['type']
 		search_value = request.GET['value']
@@ -25,6 +26,35 @@ def index(request):
 	else:
 		message = "No value"
 	return render_to_response("index.html", locals())
+
+
+
+def jwc(request):
+	result = Jwc.objects.all().order_by('time')[0:30]
+	json = serializers.serialize('json', result, fields=('title','content'))
+	return HttpResponse(json)
+
+
+
+def news(request):
+	result = Jwc.objects.all().order_by('time')[0:30]
+	json = serializers.serialize('json', result, fields=('title','content'))
+	return HttpResponse(json)
+	
+
+def newspaper(request):
+	result = Jwc.objects.all().order_by('time')[0:30]
+	json = serializers.serialize('json', result, fields=('title','content'))
+	return HttpResponse(json)
+	
+
+def lost(request):
+	result = Jwc.objects.all().order_by('time')[0:30]
+	json = serializers.serialize('json', result, fields=('title','content'))
+	return HttpResponse(json)
+	
+
+
 
 def header(request):
 	values = request.META.items()

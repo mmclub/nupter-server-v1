@@ -12,4 +12,77 @@ class Students(models.Model):
     def __unicode__(self):
     	return u'%s %s' % (self.number, self.name)
 
-    	
+
+class Jwc(models.Model):
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=3000, blank=True)
+    url = models.CharField(max_length=100)
+    time = models.IntegerField(blank=True)
+    isCheck = models.BooleanField()
+
+    def __unicode__(self):
+        return u'%s %s' % (self.title, self.content)
+
+  
+    
+class News(models.Model):
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=3000, blank=True)
+    url = models.CharField(max_length=100)
+    time = models.IntegerField(blank=True)
+    isCheck = models.BooleanField()
+
+
+    def __unicode__(self):
+        return u'%s %s' % (self.title, self.content)
+    
+
+class Trade(models.Model):
+
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=3000, blank=True)
+    url = models.CharField(max_length=100)
+    time = models.IntegerField(blank=True)
+    isCheck = models.BooleanField()
+
+
+    def __unicode__(self):
+        return u'%s %s' % (self.title, self.content)
+    
+    
+
+class Lost(models.Model):
+
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=3000, blank=True)
+    url = models.CharField(max_length=100)
+    time = models.IntegerField(blank=True)
+    isCheck = models.BooleanField()
+
+
+    def __unicode__(self):
+        return u'%s %s' % (self.title, self.content)
+
+
+
+class Newspaper(models.Model):
+
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=3000, blank=True)
+    url = models.CharField(max_length=100)
+    time = models.IntegerField(blank=True)
+    isCheck = models.BooleanField()
+
+
+    def __unicode__(self):
+        return u'%s %s' % (self.title, self.content)
+    
+    
+    
+
+    
