@@ -37,19 +37,19 @@ def jwc(request):
 
 
 def news(request):
-	result = Jwc.objects.all().order_by('time')[0:30]
+	result = News.objects.all().order_by('time')[0:30]
 	json = serializers.serialize('json', result, fields=('title','content'))
 	return HttpResponse(json)
 	
 
 def newspaper(request):
-	result = Jwc.objects.all().order_by('time')[0:30]
+	result = Newspaper.objects.all().order_by('time')[0:30]
 	json = serializers.serialize('json', result, fields=('title','content'))
 	return HttpResponse(json)
 	
 
 def lost(request):
-	result = Jwc.objects.all().order_by('time')[0:30]
+	result = Lost.objects.all().order_by('time')[0:30]
 	json = serializers.serialize('json', result, fields=('title','content'))
 	return HttpResponse(json)
 	
