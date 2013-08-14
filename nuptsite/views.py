@@ -7,25 +7,7 @@ from nuptsite.models import *
 
 		
 
-def students(request):
-	if ('value' in request.GET) and ('type' in request.GET):
-		search_type = request.GET['type']
-		search_value = request.GET['value']
-		if search_type == 'name':
-			students = Students.objects.filter(name__contains = search_value)
-		elif search_type == 'number':
-			students = Students.objects.filter(number__contains = search_value)
-		elif search_type == 'college':
-			students = Students.objects.filter(college__contains = search_value)
-		elif search_type == 'major':
-			students = Students.objects.filter(major__contains = search_value)
-		else:
-			students = Students.objects.filter(classes__contains = search_value)
-		message = "you search type : " + search_type + ' value : ' + search_value
 
-	else:
-		message = "No value"
-	return render_to_response("index.html", locals())
 
 
 
@@ -33,6 +15,23 @@ def jwc(request):
 	result = Jwc.objects.all().order_by('time')[0:30]
 	json = serializers.serialize('json', result, fields=('title','content'))
 	return HttpResponse(json)
+
+
+def jwc_new(request):
+	if ('title' in request.GET) and ('content' in request.GET):
+		title = request.GET['title']
+		content = request.GET['content']
+
+		record = Jwc(title = title, content = content)
+		record.save()
+
+		message = "ok"
+	else:
+		message = "faild"
+
+	status = "{\"status\":" + message + "}"
+	return  HttpResponse(status)
+
 
 
 
@@ -49,11 +48,25 @@ def newspaper(request):
 	
 
 def lost(request):
-	result = Lost.objects.all().order_by('time')[0:30]
+	result = Lost.objects.all().order_by('title')[0:30]
 	json = serializers.serialize('json', result, fields=('title','content'))
 	return HttpResponse(json)
-	
 
+
+
+def lost_new(request):
+	if ('title' in request.GET):
+		title = request.GET['title']
+		time = int(request.GET['time'])
+		record = Lost(title = title)
+		record.save()
+		message = "ok"
+	else:
+		message = "faild"
+
+	status = "{\"status\":" + message + "}"
+	return  HttpResponse(status)
+	
 
 
 def header(request):

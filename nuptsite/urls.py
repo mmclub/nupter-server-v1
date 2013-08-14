@@ -5,11 +5,12 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-	('^students/$', students),
 	('^jwc/$', jwc),
 	('^news/$', news),
 	('^newspaper/$', newspaper),
 	('^lost/$', lost),
+	('^lost/new/$', lost_new),
+
 
 
 	('^header/$', header),
@@ -24,5 +25,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
 
-    )
+ )
 
