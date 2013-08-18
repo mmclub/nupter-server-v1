@@ -1,4 +1,5 @@
-# Django settings for nuptsite project.
+# -*- coding: utf-8 -*-
+
 import os.path
 import socket
 
