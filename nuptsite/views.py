@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-
 from django.http import HttpResponse
 from django.core import serializers
+from django.utils import simplejson
 from nuptsite.models import *
 
 KEY = 'llpzqxh' # 不知道以后还记不记得。。
@@ -28,11 +28,35 @@ def save(type, request):
 
 
 
+class QuerySetEncoder( simplejson.JSONEncoder ):
+    """
+    Encoding QuerySet into JSON format.
+    """
+    def default( self, object ):
+        try:
+            return serializers.serialize( "python", object, ensure_ascii = False )
+        except:
+            return simplejson.JSONEncoder.default( self, object )
 
+
+
+
+def json_encode(list):
+	s = ''' {"array" : [ '''
+	for i in list:
+		s = s + '{' + "\"title\"" + ':' + '"' + i.title + '",' 
+		s = s + "\"content\"" + ':' + '"' + i.content + '",' 
+		s = s + "\"url\"" + ':' + '"' + i.url + '"},'
+	s = s[:-1] 
+	s = s + ']}'
+	return s
+
+
+
+	 
 def jwc(request):
 	result = Jwc.objects.all().order_by('time')[0:30]
-	json = serializers.serialize('json', result, fields=('title','content', 'url'))
-	return HttpResponse(json)
+	return HttpResponse(json_encode(result))
 
 def news(request):
 	result = News.objects.all().order_by('time')[0:30]
