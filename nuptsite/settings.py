@@ -1,5 +1,4 @@
 # Django settings for nuptsite project.
-
 import os.path
 import socket
 
@@ -16,7 +15,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
 
 DATABASES = {
 'default': {
@@ -164,3 +162,5 @@ LOGGING = {
         },
     }
 }
+
+ALLOWED_HOSTS = ['nuptapi.nupter.org']
