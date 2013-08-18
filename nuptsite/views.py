@@ -1,16 +1,23 @@
+# -*- coding: utf-8 -*-
+
 from django.http import HttpResponse
 from django.core import serializers
 from nuptsite.models import *
 
-
+KEY = 'llpzqxh' # 不知道以后还记不记得。。
 
 
 def save(type, request):
 	try:
+		key = request.GET['key']
 		title = request.GET['title']
 		time = request.GET['time']
 		content = request.GET['content']
 		url = request.GET['url']
+
+		if key != KEY:
+			raise Except()
+
 		record = Jwc(title = title, content = content, time = time, url = url)
 		record.save()
 		message = "ok"
