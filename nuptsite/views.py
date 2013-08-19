@@ -7,7 +7,7 @@ from nuptsite.models import *
 KEY = 'llpzqxh' # 不知道以后还记不记得。。
 
 
-def save(type, request):
+def save(type , request):
 	try:
 		key = request.GET['key']
 		title = request.GET['title']
@@ -18,7 +18,7 @@ def save(type, request):
 		if key != KEY:
 			raise Except()
 
-		record = Jwc(title = title, content = content, time = time, url = url)
+		record = type(title = title, content = content, time = time, url = url)
 		record.save()
 		message = "ok"
 	except:
@@ -77,12 +77,12 @@ def jwc_new(request):
 	return save(Jwc, request)
 
 def news_new(request):
-	return save(Jwc, request)
+	return save(News, request)
 
 
 def newspaper_new(request):
-	return save(Jwc, request)
+	return save(Newspaper, request)
 
 def lost_new(request):
-	return save(Jwc, request)
+	return save(Lost, request)
 
