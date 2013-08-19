@@ -86,3 +86,13 @@ def newspaper_new(request):
 def lost_new(request):
 	return save(Lost, request)
 
+
+def header(request):
+	values = request.GET.items()
+	values.sort()
+	html = []
+	for k, v in values:
+		html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+	return HttpResponse('<table> %s </table>' % '\n'.join(html))
+
+
