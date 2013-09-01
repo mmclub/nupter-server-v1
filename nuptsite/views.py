@@ -55,21 +55,21 @@ def json_encode(list):
 
 	 
 def jwc(request):
-	result = Jwc.objects.all().order_by('time')[0:30]
+	result = Jwc.objects.all().order_by('time').reverse()[0:30]
 	return HttpResponse(json_encode(result))
 
 def news(request):
-	result = News.objects.all().order_by('time')[0:30]
+	result = News.objects.all().order_by('time').reverse()[0:30]
 	return HttpResponse(json_encode(result))
 
 
 def newspaper(request):
-	result = Newspaper.objects.all().order_by('time')[0:30]
+	result = Newspaper.objects.all().order_by('time').reverse()[0:30]
 	return HttpResponse(json_encode(result))
 
 	
 def lost(request):
-	result = Lost.objects.all().order_by('time')[0:30]
+	result = Lost.objects.all().order_by('time').reverse()[0:30]
 	return HttpResponse(json_encode(result))
 
 
