@@ -1,0 +1,36 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+	<title>掌上南邮-失物招领-发送列表</title>
+	<meta name="robots" content="none" />
+</head>
+<body>
+
+
+	<h1>掌上南邮-失物招领-发送列表</h1>
+	<div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for r in result %}
+               <tr>
+          	  <td>{{ r.time }}</td>
+         	   <td>{{ r.content }}</td>
+         	 </tr>
+ 
+
+		  {% endfor %}
+     
+        </tbody>
+      </table>
+    </div><!-- /.table-responsive -->
+
+</body>
+</html>

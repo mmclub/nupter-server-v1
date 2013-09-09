@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.core import serializers
 from django.utils import simplejson
 from nuptsite.models import *
+from django.shortcuts import render_to_response
+
 
 KEY = 'llpzqxh' # 不知道以后还记不记得。。
 
@@ -46,7 +48,8 @@ def json_encode(list):
 	for i in list:
 		s = s + '{' + "\"title\"" + ':' + '"' + i.title + '",' 
 		s = s + "\"content\"" + ':' + '"' + i.content + '",' 
-		s = s + "\"url\"" + ':' + '"' + i.url + '"},'
+		s = s + "\"time\"" + ':' + '"' + str(i.time) + '",' 
+		s = s + "\"url\"" + ':' + '"' + i.url + '"},' 
 	s = s[:-1] 
 	s = s + ']}'
 	return s
@@ -71,6 +74,11 @@ def newspaper(request):
 def lost(request):
 	result = Lost.objects.all().order_by('time').reverse()[0:30]
 	return HttpResponse(json_encode(result))
+
+
+def lost_html(request):
+	result = Lost.objects.all().order_by('time').reverse()
+	return render_to_response('lost.html', locals())
 
 
 def jwc_new(request):

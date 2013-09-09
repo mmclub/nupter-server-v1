@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     ('^lost/$', lost),
     ('^lost/new/$', lost_new),
 
+     ('^lost\.html$', lost_html),
+
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
